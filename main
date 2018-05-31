@@ -1,0 +1,47 @@
+import time
+import sub_main
+import testing
+import matplotlib.pyplot as plt
+
+start_time = time.time()
+
+path = 'data/PVC/'
+# data = ['1','2','3','4','5']
+# data = ['1','2','3','4','5','6','7','8','9','10']
+data = ['106/all','107/all','116/all','119/all']
+# path = 'data/eksperimen/compare/'
+# data = ['100','200','105','106','107','108','124','109','116','118','121']
+
+# path = 'data/PVC/'
+# data = ['elvina1','yosi3','diantiara2','diantiara3']
+
+
+
+V         = 2
+MLII      = 1
+real_time = 0
+signal_type = MLII
+
+
+
+for i in range(len(data)):
+
+        print "========= DATA : ", data[i] ,"============"
+        read_data       = path + data[i] + '.csv'
+        read_anotasi    = path + data[i] + '_an.csv'
+        f = open(read_data, 'r')
+        lines = f.readlines()
+        f.close()
+        # file_result = open('hasil/'+data[i]+'.txt', 'w')
+        result = sub_main.main_test(lines, i, read_data, signal_type, read_anotasi)
+        # result = sub_main.main_test(lines, i, read_data, signal_type)
+        # file_result.close()
+
+# _________________________________________________ESTIMATED TIME_______________________________________________________
+
+# print "============= RESPON TIME =================="
+# end_time      = time.time()
+# response_time = end_time - start_time
+# print "Time : " + str(response_time) + " seconds"
+plt.show()
+
